@@ -1,5 +1,7 @@
 <h1>woop woop</h1>
 
+
+
   <div>
     <h3>Types of Trips To and From Welcome Park</h3>
     <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005).count %>
@@ -14,4 +16,24 @@
 <h3> Daily visits to Welcome Park</h3>
 
 <%= line_chart BikeTrip.group_by_day(:start_time).where(start_station_id: 3005).count %>
+
+
+
+    <h3>Visits To stations by month</h3>
+    <%= line_chart  BikeTrip.pluck("start_station_id").uniq.map { |c|
+      { name: c,
+        data: @trips.where(start_station_id: c).group_by_day(:start_time, format: "%B %d, %Y").count }  },
+        discrete: true,
+        height: "900px",
+        min: 20 %>
+
+
+            <h3>Visits To stations by month</h3>
+    <%= line_chart   @mytrips.pluck("station_name").uniq.map { |c|
+      { name: c,
+        data: @mytrips.where(station_name: c).group_by_month(:start_time, format: "%B %d, %Y").count }  },
+        discrete: true,
+        height: "900px",
+        min: 20 %>
+
 
