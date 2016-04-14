@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trip_id: 1
+  start_time: 2016-04-14 12:15:35
+  end_time: 2016-04-14 12:15:35
+  start_station_id: 1
+  end_station_id: 1
+  trip_route_category: MyString
+  passholder_type: MyString
+
+two:
+  trip_id: 1
+  start_time: 2016-04-14 12:15:35
+  end_time: 2016-04-14 12:15:35
+  start_station_id: 1
+  end_station_id: 1
+  trip_route_category: MyString
+  passholder_type: MyString

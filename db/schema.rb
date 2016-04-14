@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414155212) do
+ActiveRecord::Schema.define(version: 20160414173810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "april2015_trips", force: :cascade do |t|
+  create_table "bike_trips", force: :cascade do |t|
     t.integer  "trip_id"
-    t.integer  "duration"
     t.datetime "start_time"
     t.datetime "end_time"
     t.integer  "start_station_id"
@@ -29,24 +28,7 @@ ActiveRecord::Schema.define(version: 20160414155212) do
     t.datetime "updated_at",          null: false
   end
 
-  create_table "indego_trips_2015_q2s", force: :cascade do |t|
-    t.integer  "trip_id"
-    t.integer  "duration"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.integer  "start_station_id"
-    t.float    "start_lat"
-    t.float    "start_lon"
-    t.integer  "end_station_id"
-    t.float    "end_lat"
-    t.float    "end_lon"
-    t.integer  "bike_id"
-    t.integer  "plan_duration"
-    t.string   "trip_route_category"
-    t.string   "passholder_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
+  add_index "bike_trips", ["start_station_id"], name: "index_bike_trips_on_start_station_id", using: :btree
 
   create_table "stations", force: :cascade do |t|
     t.integer  "station_id"
@@ -55,25 +37,6 @@ ActiveRecord::Schema.define(version: 20160414155212) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.integer  "trip_id"
-    t.integer  "duration"
-    t.datetime "start_time"
-    t.integer  "start_station_id"
-    t.integer  "end_station_id"
-    t.string   "trip_route_category"
-    t.string   "passholder_type"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.datetime "end_time"
-  end
-
-  create_table "visits", force: :cascade do |t|
-    t.string   "country"
-    t.datetime "visited_at"
-    t.decimal  "load_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  add_index "stations", ["station_id"], name: "index_stations_on_station_id", using: :btree
 
 end
