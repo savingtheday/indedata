@@ -11,7 +11,7 @@
   </div>
 
 
-<h3> Yearly visits to Welcome Park</h3>
+<h3> Daily visits to Welcome Park</h3>
 
-<%= line_chart BikeTrip.group_by_month(:start_time).where(start_station_id: 3005).count %>
+<%= line_chart BikeTrip.group_by_day(:start_time).where(start_station_id: 3005).count %>
 
