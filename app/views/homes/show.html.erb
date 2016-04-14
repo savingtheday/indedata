@@ -1,39 +1,17 @@
-<h1>April 2015</h1>
+<h1>woop woop</h1>
 
-<div class="row">
-
-  <!-- Pie Chart -->
-  <div class="col-xs-6">
-    <h3>Types of Trips</h3>
-    <%= pie_chart BikeTrip.group(:trip_route_category).count %>
+  <div>
+    <h3>Types of Trips To and From Welcome Park</h3>
+    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005).count %>
   </div>
 
-  <div class="col-xs-6">
-    <h3>Types of Passholders</h3>
-    <%= pie_chart BikeTrip.group(:passholder_type).count %>
-  </div>
-
-<p>
-
-    <h3>Visits By Day</h3>
-    <%= line_chart BikeTrip.group_by_day(:start_time, format: "%B %d, %Y").count,
-    discrete: true,
-    height: "800px" %>
+    <div>
+    <h3>Types of Passholders Using Welcome Park</h3>
+    <%= pie_chart BikeTrip.group(:passholder_type).where(start_station_id: 3005).count %>
   </div>
 
 
+<h3> Yearly visits to Welcome Park</h3>
 
+<%= line_chart BikeTrip.group_by_month(:start_time).where(start_station_id: 3005).count %>
 
-
-
-if @trips.start_station_id == 3023
-
-
-    <h3>Visits To stations by month</h3>
-    <%= line_chart   BikeTrip.pluck("start_station_id").uniq.map { |c|
-      { name: c,
-        data: @mytrips.where(start_station_id: c).group_by_day(:start_time, format: "%B %d, %Y").count }  },
-        discrete: true,
-        height: "900px",
-        min: 20 %>
-  </div>
