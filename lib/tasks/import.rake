@@ -27,28 +27,22 @@ namespace :import do
   end
 
 
-task april_2015_trips: :environment do
-    filename = File.join Rails.root, "april_2015_trips.csv"
+task stations: :environment do
+    filename = File.join Rails.root, "stations.csv"
     counter = 0
 
 
     CSV.foreach(filename) do |row|
-      trip, duration, started, ended, start_station, end_station, trip_category, pass = row
-      next if trip == "trip_id"
-      trip = April2015Trip.create(
-        trip_id: trip,
-        duration: duration,
-        start_time:  DateTime.strptime(started, '%m/%d/%y %H:%M'),
-        end_time: DateTime.strptime(ended, '%m/%d/%y %H:%M'),
-        start_station_id: start_station,
-        end_station_id: end_station,
-        trip_route_category: trip_category,
-        passholder_type: pass
+      number, name = row
+      next if number == "Station ID"
+      number = Station.create(
+        station_id: number,
+        station_name: name,
       )
-      counter += 1 if trip.persisted?
+      counter += 1 if number.persisted?
     end
 
-    puts "imported #{counter} April 2015 trips"
+    puts "imported #{counter} stations"
   end
 
 
