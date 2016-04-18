@@ -1,0 +1,6 @@
+<%= form_for(@trip) do |f| %>
+
+  <%= f.label :month %><br>
+    <%= f.select :start_time, BikeTrip::MONTHS.each_with_index.map{|l,i| [l, l]} %>
+    <%= f.submit "Go", class: 'button' %>
+<% end %>

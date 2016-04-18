@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'homes/show'
   root to: "homes#show"
+
+  resources :bike_trips
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

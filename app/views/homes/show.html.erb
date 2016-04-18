@@ -1,10 +1,23 @@
-<h1>woop woop</h1>
+<h1><%= @kiosk["name"] %></h1>
+
+ <b>Name:</b> <%= @kiosk["name"] %>
+  <b>Address:</b> <%= @kiosk["addressStreet"] %>, Philadelphia, PA  <%= @kiosk["addressZipCode"] %>
+  <b>Kiosk ID:</b> <%= @kiosk["kioskId"] %>
+  <b>Total Docks:</b> <%= @kiosk["totalDocks"] %>
+  <b>Bikes Currently Available:</b> <%= @kiosk["bikesAvailable"] %>
+  <b>Docks Currently Available:</b> <%= @kiosk["docksAvailable"] %>
+
+<p>
 
 
 
+<%= render 'months' %>
+
+
+<p>
   <div>
     <h3>Types of Trips To and From Welcome Park</h3>
-    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005).count %>
+    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005,start_time: "2015-04-01".."2015-04-30").count %>
   </div>
 
     <div>
@@ -18,17 +31,10 @@
 <%= line_chart BikeTrip.group_by_day(:start_time).where(start_station_id: 3005).count %>
 
 
-
-    <h3>Visits To stations by month</h3>
-    <%= line_chart  BikeTrip.pluck("start_station_id").uniq.map { |c|
-      { name: c,
-        data: @trips.where(start_station_id: c).group_by_day(:start_time, format: "%B %d, %Y").count }  },
-        discrete: true,
-        height: "900px",
-        min: 20 %>
+<%= line_chart BikeTrip.group_by_day_of_week(:start_time).where(start_station_id: 3005).count %>
 
 
-            <h3>Visits To stations by month</h3>
+            <h3>Overall Visits To stations by month</h3>
     <%= line_chart   @mytrips.pluck("station_name").uniq.map { |c|
       { name: c,
         data: @mytrips.where(station_name: c).group_by_month(:start_time, format: "%B %d, %Y").count }  },
@@ -37,3 +43,12 @@
         min: 20 %>
 
 
+            <h3>Overall Visits To stations by day of week</h3>
+    <%= line_chart   @mytrips.pluck("station_name").uniq.map { |c|
+      { name: c,
+        data: @mytrips.where(station_name: c).group_by_day_of_week(:start_time, format: "%B %d, %Y").count }  },
+        discrete: true,
+        height: "900px",
+        min: 20 %>
+
+<%= @all_kiosks %>
