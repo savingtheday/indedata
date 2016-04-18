@@ -10,13 +10,38 @@ class HomesController < ApplicationController
     @data = http.get(uri.request_uri)
   end
 
+
+
+  def updated_data_page
+    data_methods
+    # @month_range = s
+    @result = []
+    BikeTrip.first.start_time.to_date.upto(BikeTrip.last.start_time.to_date) do |a|
+      @result << a.strftime('%F')
+    end
+    puts "RESULTS ARE: #{@result.inspect}"
+    @result
+
+    #@display_month = @result.strftime('%b %y')
+  end
+
   def show
+    @default_start = "2015-04-01"
+    @default_end = "2015-04-30"
+    data_methods
+    @results = updated_data_page
+  end
+
+
+  def data_methods
     @trip = BikeTrip.new
     @station = Station.all
     @mytrips = Station.joins(:bike_trips)
     data = indego_api_response.body
     @result = JSON.parse(data)
     @kiosk = @result['features'][1]['properties']
+
+
 
     all_names = []
 
@@ -26,7 +51,6 @@ class HomesController < ApplicationController
 
     @all_kiosks = all_names
   end
-
 
 
 
