@@ -1,0 +1,9 @@
+            <h3>Overall Visits To stations by month</h3>
+    <%= line_chart   @mytrips.pluck("station_name").uniq.map { |c|
+      { name: c,
+        data: @mytrips.where(station_name: c).group_by_month(:start_time, format: "%b, %Y").count }  },
+        discrete: true,
+        height: "1900px",
+        width: "1300px" %>
+
+

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'homes/newdate' => 'homes#newdate'
   post 'homes/show' => 'homes#show'
   get 'homes/show' => 'homes#show'
+  get 'homes/overall' => 'homes#overall'
   root to: "homes#show"
 
   resources :bike_trips

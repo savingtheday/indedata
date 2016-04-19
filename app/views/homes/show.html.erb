@@ -30,11 +30,13 @@ Data for <%= @month_start %> to <%= @month_end %>
 
 <h3> Daily visits to Welcome Park</h3>
 
-<%= line_chart BikeTrip.group_by_day(:start_time).where(start_station_id: 3005, start_time: @month_start..@month_end).count %>
+<%= line_chart BikeTrip.group_by_day(:start_time, format: "%a %B %d, %y").where(start_station_id: 3005, start_time: @month_start..@month_end).count %>
 
 
-<h3> Monthly visits to Welcome Park</h3>
+<h3> Monthly visits as compared to highest and lowest performing kiosks</h3>
 
-<%= line_chart BikeTrip.group_by_month(:start_time).where(start_station_id: 3005, start_time: @month_start..@month_end).count %>
-
-
+<%= line_chart [
+  {name: @kiosk["name"], data: BikeTrip.group_by_month(:start_time).where(start_station_id: 3005, start_time: @month_start..@month_end).count},
+  {name: "Rittenhouse Square", data: BikeTrip.group_by_month(:start_time).where(start_station_id: 3023, start_time: @month_start..@month_end).count},
+  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: 3016, start_time: @month_start..@month_end).count}
+] %>

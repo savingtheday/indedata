@@ -40,6 +40,9 @@ class HomesController < ApplicationController
     render 'show'
   end
 
+  def overall #showing all station monthly data in huge chart
+    data_methods
+  end
 
   def data_methods
     @trip = BikeTrip.new
