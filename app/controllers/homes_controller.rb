@@ -25,16 +25,16 @@ class HomesController < ApplicationController
   end
 
   def show
-    @default_start = "2015-04-01"
-    @default_end = "2015-04-30"
+    @month_start = "2015-04-01"
+    @month_end = "2015-04-30"
     data_methods
     @results = updated_data_page
     #month_params
   end
 
-  def newshow
-    @default_start = params[:start_month]
-    @default_end = params[:end_month]
+  def newdate
+    @month_start = params[:start_month]
+    @month_end = params[:end_month]
     data_methods
     @results = updated_data_page
     render 'show'
@@ -43,10 +43,12 @@ class HomesController < ApplicationController
 
   def data_methods
     @trip = BikeTrip.new
+    #@pretty_month_start = @month_start.strftime('%b %y')
     @station = Station.all
     @mytrips = Station.joins(:bike_trips)
     data = indego_api_response.body
     @result = JSON.parse(data)
+
     @kiosk = @result['features'][1]['properties']
 
 

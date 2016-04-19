@@ -13,10 +13,13 @@
 
 <%= render 'months' %>
 
+Data for <%= @month_start %> to <%= @month_end %>
+
+
 <p>
   <div>
     <h3>Types of Trips To and From Welcome Park</h3>
-    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005,start_time: @default_start..@default_end).count %>
+    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005,start_time: @month_start..@month_end).count %>
   </div>
 
     <div>
@@ -27,27 +30,11 @@
 
 <h3> Daily visits to Welcome Park</h3>
 
-<%= line_chart BikeTrip.group_by_day(:start_time).where(start_station_id: 3005).count %>
+<%= line_chart BikeTrip.group_by_day(:start_time).where(start_station_id: 3005, start_time: @month_start..@month_end).count %>
 
 
-<%= line_chart BikeTrip.group_by_day_of_week(:start_time).where(start_station_id: 3005).count %>
+<h3> Monthly visits to Welcome Park</h3>
+
+<%= line_chart BikeTrip.group_by_month(:start_time).where(start_station_id: 3005, start_time: @month_start..@month_end).count %>
 
 
-            <h3>Overall Visits To stations by month</h3>
-    <%= line_chart   @mytrips.pluck("station_name").uniq.map { |c|
-      { name: c,
-        data: @mytrips.where(station_name: c).group_by_month(:start_time, format: "%B %d, %Y").count }  },
-        discrete: true,
-        height: "900px",
-        min: 20 %>
-
-
-            <h3>Overall Visits To stations by day of week</h3>
-    <%= line_chart   @mytrips.pluck("station_name").uniq.map { |c|
-      { name: c,
-        data: @mytrips.where(station_name: c).group_by_day_of_week(:start_time, format: "%B %d, %Y").count }  },
-        discrete: true,
-        height: "900px",
-        min: 20 %>
-
-<%= @all_kiosks %>

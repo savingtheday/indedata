@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'homes/newshow' => 'homes#newshow'
+  get 'homes/newdate' => 'homes#newdate'
   post 'homes/show' => 'homes#show'
   get 'homes/show' => 'homes#show'
   root to: "homes#show"
