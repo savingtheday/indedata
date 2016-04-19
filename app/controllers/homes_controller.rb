@@ -14,15 +14,13 @@ class HomesController < ApplicationController
 
   def updated_data_page
     data_methods
-    # @month_range = s
     @result = []
     BikeTrip.first.start_time.to_date.upto(BikeTrip.last.start_time.to_date) do |a|
       @result << a.strftime('%F')
     end
     puts "RESULTS ARE: #{@result.inspect}"
     @result
-
-    #@display_month = @result.strftime('%b %y')
+    #month_params
   end
 
   def show
@@ -30,6 +28,7 @@ class HomesController < ApplicationController
     @default_end = "2015-04-30"
     data_methods
     @results = updated_data_page
+    #month_params
   end
 
 
@@ -52,7 +51,10 @@ class HomesController < ApplicationController
     @all_kiosks = all_names
   end
 
-
+    # def month_params
+    #   @var_start = [:start_month]
+    #   @var_end = [:end_month]
+    # end
 
 
   private
@@ -61,4 +63,6 @@ class HomesController < ApplicationController
       params.require(:station).permit(:addressStreet, :bikes_available, :docks_available,
      :kiosk_id, :name, :total_docks)
     end
+
+
 end

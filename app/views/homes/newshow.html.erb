@@ -1,0 +1,8 @@
+
+<%= render 'months' %>
+
+<p>
+  <div>
+    <h3>Types of Trips To and From Welcome Park</h3>
+    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: 3005,start_time: @var_start..@var_end).count %>
+  </div>

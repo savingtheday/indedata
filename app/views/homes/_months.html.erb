@@ -1,10 +1,10 @@
 
-<%= form_tag('/homes/show', method: :post) do %>
+<%= form_tag('/homes/newshow', method: :post) do %>
 
   <%= label_tag :set_months %><br>
-  Start: <%= select_tag :start_time, options_for_select(@results) %>
+  Start: <%= select_tag :start_month, options_for_select(@results) %>
 
-  End: <%= select_tag :start_time, options_for_select(@results) %>
+  End: <%= select_tag :end_month, options_for_select(@results) %>
 
     <%= submit_tag :Send %>
 

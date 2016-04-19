@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post 'homes/show'
+  post 'homes/newshow'
   get 'homes/show'
   root to: "homes#show"
 
