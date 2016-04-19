@@ -1,5 +1,5 @@
 
-<%= form_tag('/homes/newshow', method: :post) do %>
+<%= form_tag('/homes/newshow', method: :get) do %>
 
   <%= label_tag :set_months %><br>
   Start: <%= select_tag :start_month, options_for_select(@results) %>

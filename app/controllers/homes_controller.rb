@@ -12,6 +12,7 @@ class HomesController < ApplicationController
 
 
 
+
   def updated_data_page
     data_methods
     @result = []
@@ -29,6 +30,14 @@ class HomesController < ApplicationController
     data_methods
     @results = updated_data_page
     #month_params
+  end
+
+  def newshow
+    @default_start = params[:start_month]
+    @default_end = params[:end_month]
+    data_methods
+    @results = updated_data_page
+    render 'show'
   end
 
 
@@ -52,8 +61,8 @@ class HomesController < ApplicationController
   end
 
     # def month_params
-    #   @var_start = [:start_month]
-    #   @var_end = [:end_month]
+    #   @var_start = params[:start_month]
+    #   @var_end = params[:end_month]
     # end
 
 
