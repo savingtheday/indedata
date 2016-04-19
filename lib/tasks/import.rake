@@ -3,8 +3,9 @@ require 'csv'
 namespace :import do
 
   task trips: :environment do
-    BikeTrip.destroy_alltst
-    filename = File.join Rails.root, "Indego_Trips_2015Q2.csv"
+    #BikeTrip.destroy_alltst
+        puts 'heck'
+    filename = File.join Rails.root, "kris.csv"
     counter = 0
 
 
@@ -17,7 +18,7 @@ namespace :import do
         end_time: DateTime.strptime(ended, '%m/%d/%y %H:%M'),
         start_station_id: start_station,
         end_station_id: end_station,
-        t: trip_category,
+        trip_route_category: trip_category,
         passholder_type: pass
       )
       counter += 1 if trip.persisted?
