@@ -11,9 +11,17 @@ class HomesController < ApplicationController
   end
 
 
+  def updated_station_page    #change station dropdown
+    data_methods
+    @new_station = []
+    Station.first.station_id.upto(Station.last.station_id) do |b|
+      @new_station << b
+    end
+    puts "RESULTS ARE: #{@new_station.inspect}"
+    @new_station
+  end
 
-
-  def updated_data_page
+  def updated_data_page #change date dropdown
     data_methods
     @result = []
     BikeTrip.first.start_time.to_date.upto(BikeTrip.last.start_time.to_date) do |a|
@@ -21,22 +29,24 @@ class HomesController < ApplicationController
     end
     puts "RESULTS ARE: #{@result.inspect}"
     @result
-    #month_params
   end
 
   def show
     @month_start = "2015-04-01"
-    @month_end = "2015-04-30"
+    @month_end = "2015-12-30"
+    @station_variable = 3005
     data_methods
-    @results = updated_data_page
-    #month_params
+    @date_change = updated_data_page
+    @selected_station = updated_station_page
   end
 
   def newdate
     @month_start = params[:start_month]
     @month_end = params[:end_month]
+    @station_variable = params[:choose_station]
     data_methods
-    @results = updated_data_page
+    @date_change = updated_data_page
+    @selected_station = updated_station_page
     render 'show'
   end
 
@@ -65,10 +75,6 @@ class HomesController < ApplicationController
     @all_kiosks = all_names
   end
 
-    # def month_params
-    #   @var_start = params[:start_month]
-    #   @var_end = params[:end_month]
-    # end
 
 
   private
