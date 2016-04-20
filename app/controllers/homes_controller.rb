@@ -11,15 +11,27 @@ class HomesController < ApplicationController
   end
 
 
-  def updated_station_page    #change station dropdown
+  # def updated_station_page    #change station dropdown
+  #   data_methods
+  #   @new_station = []
+  #   Station.first.station_id.upto(Station.last.station_id) do |b|
+  #     @new_station << b
+  #   end
+  #   puts "station RESULTS ARE: #{@new_station.inspect}"
+  #   @new_station
+  # end
+
+  def updated_station_name_page    #change station dropdown
     data_methods
-    @new_station = []
-    Station.first.station_id.upto(Station.last.station_id) do |b|
-      @new_station << b
+    @station_name_array = []
+    Station.all.each do |c|
+      @station_name_array.push([c.station_name, c.station_id])
     end
-    puts "RESULTS ARE: #{@new_station.inspect}"
-    @new_station
+    puts "***********station name RESULTS ARE: #{@station_name_array.inspect}"
+    @station_name_array
   end
+
+
 
   def updated_data_page #change date dropdown
     data_methods
@@ -27,7 +39,7 @@ class HomesController < ApplicationController
     BikeTrip.first.start_time.to_date.upto(BikeTrip.last.start_time.to_date) do |a|
       @result << a.strftime('%F')
     end
-    puts "RESULTS ARE: #{@result.inspect}"
+    puts "date RESULTS ARE: #{@result.inspect}"
     @result
   end
 
@@ -37,7 +49,7 @@ class HomesController < ApplicationController
     @station_variable = 3005
     data_methods
     @date_change = updated_data_page
-    @selected_station = updated_station_page
+    @selected_station_name = updated_station_name_page
   end
 
   def newdate
@@ -46,7 +58,7 @@ class HomesController < ApplicationController
     @station_variable = params[:choose_station]
     data_methods
     @date_change = updated_data_page
-    @selected_station = updated_station_page
+    @selected_station_name = updated_station_name_page
     render 'show'
   end
 
@@ -56,7 +68,8 @@ class HomesController < ApplicationController
 
   def data_methods
     @trip = BikeTrip.new
-    #@pretty_month_start = @month_start.strftime('%b %y')
+    @pretty_month_start = Time.parse(@month_start).strftime('%b %d, %Y')
+    @pretty_month_end = Time.parse(@month_end).strftime('%b %d, %Y')
     @station = Station.all
     @mytrips = Station.joins(:bike_trips)
     data = indego_api_response.body

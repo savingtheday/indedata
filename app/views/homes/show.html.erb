@@ -13,29 +13,29 @@
 
 <%= render 'months' %>
 
-Data for <%= @month_start %> to <%= @month_end %>
+Data for <%= @pretty_month_start %> to <%= @pretty_month_end %>
 
 
 <p>
   <div>
-    <h3>Types of Trips To and From Welcome Park</h3>
+    <h3>Types of Trips To and From <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
     <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: @station_variable,start_time: @month_start..@month_end).count,
      colors: ["#86b300", "#2d00b3"] %>
   </div>
 
     <div>
-    <h3>Types of Passholders Using Welcome Park</h3>
+    <h3>Types of Passholders Using <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
     <%= pie_chart BikeTrip.group(:passholder_type).where(start_station_id: @station_variable).count,
     colors: ["#2d00b3", "#86b300", "#b30086"] %>
   </div>
 
 
-<h3> Daily visits to Welcome Park</h3>
+<h3> Daily visits to <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
 
 <%= line_chart BikeTrip.group_by_day(:start_time, format: "%a %B %d, %y").where(start_station_id: @station_variable, start_time: @month_start..@month_end).count %>
 
 
-<h3> Monthly visits as compared to highest and lowest performing kiosks</h3>
+<h3> Monthly visits as compared to highest and lowest performing kiosks</h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
 
 <%= line_chart [
   {name: @kiosk["name"], data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable, start_time: @month_start..@month_end).count},

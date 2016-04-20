@@ -2,12 +2,12 @@
 <%= form_tag('/homes/newdate', method: :get) do %>
 
   <%= label_tag :set_months %><br>
-  Start: <%= select_tag :start_month, options_for_select(@date_change) %>
+  Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %>
 
-  End: <%= select_tag :end_month, options_for_select(@date_change) %>
+  End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
 
 
-  Station: <%= select_tag :choose_station, options_for_select(@selected_station) %>
+  Station: <%= select_tag :choose_station, options_for_select(@selected_station_name, params[:choose_station]) %>
 
     <%= submit_tag :Send %>
 
