@@ -1,3 +1,72 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@media (max-width: 450px) {
+
+  #chartData{
+    text-align: center;
+    height: 25em;
+    background-color: #c7ffff;
+    border-radius: 5px;
+    width: 80%;
+    display: inline-block;
+    margin: 0 auto;
+  }
+
+  #chartMonths{
+    width: 30%;
+    padding-left: 35%;
+  }
+
+
+  #chartStations{
+    width: 50%;
+  }
+
+  .drop{
+    width: 30px;
+  }
+}
+
+@media (min-width: 451px) {
+
+  #chartData{
+    text-align: center;
+    height: 15em;
+    background-color: #c7ffff;
+    border-radius: 5px;
+    width: 80%;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  #chartMonths{
+    width: 30%;
+    display: inline-block;
+    float: left;
+  }
+
+
+  #chartStations{
+    width: 50%;
+    display: inline-block;
+    float: left;
+  }
+
+  .lineChart{
+    margin: 3em;
+    border-radius: 5px;
+  }
+
+  .pieContainer{
+    margin: 3em;
+    border-radius: 5px;
+  }
+
+  .pieChart{
+    display: inline-block;
+    float: left;
+    margin: 1em;
+  }
+}
