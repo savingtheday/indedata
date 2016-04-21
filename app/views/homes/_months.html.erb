@@ -1,23 +1,27 @@
+<form id="chartData">
+  <%= form_tag('/homes/newdate', method: :get) do %>
+    <div id="chartMonths">
+      <%= label_tag :set_dates %>
+      <br>
+      Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %>
+      <br>
+      End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
+    </div>
 
-<%= form_tag('/homes/newdate', method: :get) do %>
+    <div id="chartStations">
+      Primary Station: <%= select_tag :choose_station, options_for_select(@selected_station_name, params[:choose_station]), :include_blank => true %>
+      <br>
+      Additional Station: <%= select_tag :choose_station_two, options_for_select(@selected_station_name, params[:choose_station_two]),  :include_blank => true %>
+      <br>
+      Additional Station: <%= select_tag :choose_station_three, options_for_select(@selected_station_name, params[:choose_station_three]),  :include_blank => true %>
+      <br>
+      Additional Station: <%= select_tag :choose_station_four, options_for_select(@selected_station_name, params[:choose_station_four]),  :include_blank => true %>
+      <br>
+      Additional Station: <%= select_tag :choose_station_five, options_for_select(@selected_station_name, params[:choose_station_five]),  :include_blank => true %>
+      <br>
+      <%= submit_tag :Send %>
+    </div>
 
-  <%= label_tag :set_months %><br>
-  Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %>
+  <% end %>
 
-  End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
-
-
-  Primary Station: <%= select_tag :choose_station, options_for_select(@selected_station_name, params[:choose_station]) %>
-
-  Additional Stations: <%= select_tag :choose_station_two, options_for_select(@selected_station_name, params[:choose_station_two]) %>
-
-  Additional Stations: <%= select_tag :choose_station_three, options_for_select(@selected_station_name, params[:choose_station_three]) %>
-
-  Additional Stations: <%= select_tag :choose_station_four, options_for_select(@selected_station_name, params[:choose_station_four]) %>
-
-  Additional Stations: <%= select_tag :choose_station_five, options_for_select(@selected_station_name, params[:choose_station_five]) %>
-
-    <%= submit_tag :Send %>
-
-<% end %>
-
+</form>

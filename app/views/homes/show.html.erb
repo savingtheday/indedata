@@ -1,48 +1,43 @@
-<h1><%= @kiosk["name"] %></h1>
+<div id="mainContainer">
 
- <b>Name:</b> <%= @kiosk["name"] %>
-  <b>Address:</b> <%= @kiosk["addressStreet"] %>, Philadelphia, PA  <%= @kiosk["addressZipCode"] %>
-  <b>Kiosk ID:</b> <%= @kiosk["kioskId"] %>
-  <b>Total Docks:</b> <%= @kiosk["totalDocks"] %>
-  <b>Bikes Currently Available:</b> <%= @kiosk["bikesAvailable"] %>
-  <b>Docks Currently Available:</b> <%= @kiosk["docksAvailable"] %>
-
-<p>
+  <%= render 'months' %>
+  <br>
 
 
-
-<%= render 'months' %>
-
-Data for <%= @pretty_month_start %> to <%= @pretty_month_end %>
-
-
-<h3> Monthly visits as compared to additional stations</h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
-
-<%= line_chart [
-  {name: @kiosk["name"], data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable, start_time: @month_start..@month_end).count},
-  {name: "Rittenhouse Square", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_two, start_time: @month_start..@month_end).count},
-  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_three, start_time: @month_start..@month_end).count},
-  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_four, start_time: @month_start..@month_end).count},
-  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_five, start_time: @month_start..@month_end).count}
-], colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"] %>
-
-<p>
-  <div>
-    <h3>Types of Trips To and From <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
-    <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: @station_variable,start_time: @month_start..@month_end).count,
-     colors: ["#86b300", "#2d00b3"] %>
+  <h2> Monthly visits as compared to additional stations
+  <br>
+  from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
+  <div class="lineChart">
+    <%= line_chart [
+      {name: @kiosk["name"], data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable, start_time: @month_start..@month_end).count},
+      {name: "Rittenhouse Square", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_two, start_time: @month_start..@month_end).count},
+      {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_three, start_time: @month_start..@month_end).count},
+      {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_four, start_time: @month_start..@month_end).count},
+      {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_five, start_time: @month_start..@month_end).count}
+      ],
+      colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"] %>
   </div>
 
-    <div>
-    <h3>Types of Passholders Using <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
-    <%= pie_chart BikeTrip.group(:passholder_type).where(start_station_id: @station_variable).count,
-    colors: ["#2d00b3", "#86b300", "#b30086"] %>
+  <div class="lineChart">
+    <h2> Daily visits to <%= @kiosk["name"] %>
+    <br>
+    from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
+
+    <%= line_chart BikeTrip.group_by_day(:start_time, format: "%a %B %d, %y").where(start_station_id: @station_variable, start_time: @month_start..@month_end).count %>
   </div>
+    <div class="lineChart">
+      <h3>Types of Trips To and From <%= @kiosk["name"] %>
+      <br>
+      from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h3>
 
+      <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: @station_variable,start_time: @month_start..@month_end).count,
+       colors: ["#86b300", "#2d00b3"] %>
+    </div>
 
-<h3> Daily visits to <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
-
-<%= line_chart BikeTrip.group_by_day(:start_time, format: "%a %B %d, %y").where(start_station_id: @station_variable, start_time: @month_start..@month_end).count %>
-
-
-
+    <div class="lineChart">
+      <h3>Types of Passholders Using <%= @kiosk["name"] %>
+      <br>
+      from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h3>
+      <%= pie_chart BikeTrip.group(:passholder_type).where(start_station_id: @station_variable).count,
+      colors: ["#2d00b3", "#86b300", "#b30086"] %>
+    </div>
