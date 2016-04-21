@@ -3,9 +3,9 @@
     <div id="chartMonths">
       <%= label_tag :set_dates %>
       <br>
-      Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %>
+      Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]),  :include_blank => true %>
       <br>
-      End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
+      End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]),  :include_blank => true %>
     </div>
 
     <div id="chartStations">
