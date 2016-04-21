@@ -7,7 +7,15 @@
   End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
 
 
-  Station: <%= select_tag :choose_station, options_for_select(@selected_station_name, params[:choose_station]) %>
+  Primary Station: <%= select_tag :choose_station, options_for_select(@selected_station_name, params[:choose_station]) %>
+
+  Additional Stations: <%= select_tag :choose_station_two, options_for_select(@selected_station_name, params[:choose_station_two]) %>
+
+  Additional Stations: <%= select_tag :choose_station_three, options_for_select(@selected_station_name, params[:choose_station_three]) %>
+
+  Additional Stations: <%= select_tag :choose_station_four, options_for_select(@selected_station_name, params[:choose_station_four]) %>
+
+  Additional Stations: <%= select_tag :choose_station_five, options_for_select(@selected_station_name, params[:choose_station_five]) %>
 
     <%= submit_tag :Send %>
 

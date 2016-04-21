@@ -16,6 +16,16 @@
 Data for <%= @pretty_month_start %> to <%= @pretty_month_end %>
 
 
+<h3> Monthly visits as compared to additional stations</h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
+
+<%= line_chart [
+  {name: @kiosk["name"], data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable, start_time: @month_start..@month_end).count},
+  {name: "Rittenhouse Square", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_two, start_time: @month_start..@month_end).count},
+  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_three, start_time: @month_start..@month_end).count},
+  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_four, start_time: @month_start..@month_end).count},
+  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable_five, start_time: @month_start..@month_end).count}
+], colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"] %>
+
 <p>
   <div>
     <h3>Types of Trips To and From <%= @kiosk["name"] %></h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
@@ -35,10 +45,4 @@ Data for <%= @pretty_month_start %> to <%= @pretty_month_end %>
 <%= line_chart BikeTrip.group_by_day(:start_time, format: "%a %B %d, %y").where(start_station_id: @station_variable, start_time: @month_start..@month_end).count %>
 
 
-<h3> Monthly visits as compared to highest and lowest performing kiosks</h3> from  <%= @pretty_month_start %> to <%= @pretty_month_end %>
 
-<%= line_chart [
-  {name: @kiosk["name"], data: BikeTrip.group_by_month(:start_time).where(start_station_id: @station_variable, start_time: @month_start..@month_end).count},
-  {name: "Rittenhouse Square", data: BikeTrip.group_by_month(:start_time).where(start_station_id: 3023, start_time: @month_start..@month_end).count},
-  {name: "John F. Street Community Center", data: BikeTrip.group_by_month(:start_time).where(start_station_id: 3016, start_time: @month_start..@month_end).count}
-], colors: ["#86b300", "#b30086", "#2d00b3"] %>

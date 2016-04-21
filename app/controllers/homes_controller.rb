@@ -11,15 +11,6 @@ class HomesController < ApplicationController
   end
 
 
-  # def updated_station_page    #change station dropdown
-  #   data_methods
-  #   @new_station = []
-  #   Station.first.station_id.upto(Station.last.station_id) do |b|
-  #     @new_station << b
-  #   end
-  #   puts "station RESULTS ARE: #{@new_station.inspect}"
-  #   @new_station
-  # end
 
   def updated_station_name_page    #change station dropdown
     data_methods
@@ -47,6 +38,10 @@ class HomesController < ApplicationController
     @month_start = "2015-04-01"
     @month_end = "2015-12-30"
     @station_variable = 3005
+    @station_variable_two = nil
+    @station_variable_three = nil
+    @station_variable_four = nil
+    @station_variable_five = nil
     data_methods
     @date_change = updated_data_page
     @selected_station_name = updated_station_name_page
@@ -56,6 +51,10 @@ class HomesController < ApplicationController
     @month_start = params[:start_month]
     @month_end = params[:end_month]
     @station_variable = params[:choose_station]
+    @station_variable_two = params[:choose_station_two]
+    @station_variable_three = params[:choose_station_three]
+    @station_variable_four = params[:choose_station_four]
+    @station_variable_five = params[:choose_station_five]
     data_methods
     @date_change = updated_data_page
     @selected_station_name = updated_station_name_page
@@ -64,6 +63,18 @@ class HomesController < ApplicationController
 
   def overall #showing all station monthly data in huge chart
     data_methods
+  end
+
+  def current_stats #shows json for current kiosk stats
+    data = indego_api_response.body
+    @result = JSON.parse(data)
+    @kiosk = @result['features'][1]['properties']
+    all_names = []
+    @result['features'].each do |child|
+      all_names.push( child['properties']['name'])
+    end
+
+    @all_kiosks = all_names
   end
 
   def data_methods
