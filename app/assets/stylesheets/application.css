@@ -13,10 +13,53 @@
  *= require_tree .
  *= require_self
  */
+
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:800,400);
+
 body{
   font-family: Arial;
+  font-size: 14px;
 }
 
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:visited{
+  text-decoration: none;
+  color: white;
+}
+
+.mainLogo{
+  color: #b30086;
+  font-size: 2.5em;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+}
+
+.linkMenu{
+  list-style: none;
+  height: 0;
+  font-size: 1.5em;
+  padding-top: 3px;
+  display: inline-block;
+}
+
+.linkMenuBurger{
+  visibility: hidden;
+}
+
+.mainHeader{
+  width: 100%;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  background-color: black;
+  position: fixed;
+  height: 5em;
+  padding-top: 1em;
+  padding-left: .5em;
+}
 
 #mainContainer{
   text-align: center;

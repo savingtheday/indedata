@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Indego</title>
+  <title>Indego Databook BETA</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
-
-
+<% stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Josefin+Sans:600'%>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Titillium+Web'%>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <header class="mainHeader">
+
+    <span class="mainLogo">Indego Databook</span>
+    <div class="linkMenu">
+
+        <%= link_to 'Home', root_url %>
+
+        <%= link_to 'Date', root_url %>
+
+        <%= link_to 'Contact', root_url %>
+      </div>
+
+    <ul class="linkMenuBurger">
+      <li>
+        <%= link_to 'Home', root_url %>
+      </li>
+      <li>
+        <%= link_to 'Date', root_url %>
+      </li>
+      <li>
+        <%= link_to 'Contact', root_url %>
+      </li>
+    </ul>
+
+  </header>
+
+
+  <%= yield %>
 
 </body>
 </html>

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'homes/show' => 'homes#show'
   get 'homes/overall' => 'homes#overall'
   get 'homes/currentstats' => 'homes#current_stats'
-  root to: "homes#show"
+  get 'static/mainpage'
+  root "static#mainpage"
 
   resources :bike_trips
   # The priority is based upon order of creation: first created -> highest priority.

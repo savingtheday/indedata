@@ -101,6 +101,16 @@ class HomesController < ApplicationController
 
 
 
+  # def name_via_id
+  #   data_methods
+  #   @selectedname = []
+  #   name_from_id = @station.station_name.collect(&:station_id)
+  #     @mytrips.each do |mytrips|
+  #   @selectedname << mytrips if name_from_id.include?(mytrips.station_id)
+  #   end
+  # end
+
+
   private
 
     def station_params
