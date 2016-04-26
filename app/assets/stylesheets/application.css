@@ -17,7 +17,7 @@
 @import url(https://fonts.googleapis.com/css?family=Work+Sans:800,400);
 
 body{
-  font-family: Arial;
+  font-family: 'Work Sans', sans-serif;
   font-size: 14px;
 }
 
@@ -29,6 +29,12 @@ a{
 a:visited{
   text-decoration: none;
   color: white;
+  cursor: pointer;
+}
+
+a:hover{
+  color: #0086b3;
+  cursor: pointer;
 }
 
 .mainLogo{
@@ -36,6 +42,10 @@ a:visited{
   font-size: 2.5em;
   font-family: 'Work Sans', sans-serif;
   font-weight: 800;
+}
+
+.topLink{
+  margin-left: 1.5em;
 }
 
 .linkMenu{
@@ -61,9 +71,53 @@ a:visited{
   padding-left: .5em;
 }
 
+.contentContainer{
+  width: 100%;
+}
+
+.content{
+  float: left;
+  width: 33%;
+  display: inline-block;
+  height: 25em;
+}
+
+.left{
+  background-color: white;
+}
+
+.middle{
+  background-color: #b30086;
+}
+
+.right{
+  background-image: url('indego1.png');
+  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+  filter: grayscale(100%);
+  background-size: cover;
+  text-align: center;
+}
+
 #mainContainer{
   text-align: center;
   margin: 0 auto;
   width: 100%;
   margin: 0 10px;
+  padding: .5em;
 }
+
+.insideContent{
+  margin: 2em;
+}
+
+.footer{
+  background-color: black;
+  height: 2em;
+  color: white;
+  width: 100%;
+  clear: left;
+  bottom: 0;
+  text-align: center;
+}
+
+

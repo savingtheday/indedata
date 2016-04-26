@@ -13,14 +13,14 @@
 
   <header class="mainHeader">
 
-    <span class="mainLogo">Indego Databook</span>
+    <span class="mainLogo">Indedata</span>
     <div class="linkMenu">
 
-        <%= link_to 'Home', root_url %>
+        <span class="topLink"><%= link_to 'Home', root_url %></span>
 
-        <%= link_to 'Date', root_url %>
+        <span class="topLink"><%= link_to 'Data', root_url %></span>
 
-        <%= link_to 'Contact', root_url %>
+        <span class="topLink"><%= link_to 'Contact', root_url %></span>
       </div>
 
     <ul class="linkMenuBurger">
@@ -39,6 +39,11 @@
 
 
   <%= yield %>
+
+
+    <div class="footer">
+      fjiso
+    </div>
 
 </body>
 </html>

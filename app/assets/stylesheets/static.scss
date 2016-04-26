@@ -16,7 +16,7 @@
 .textContainer{
   width: 100%;
   text-align: center;
-  padding-top: 8em;
+  padding-top: 9em;
 }
 
 .bigParallaxText{
@@ -25,4 +25,19 @@
   font-size: 5em;
   font-family: 'Work Sans', sans-serif;
   font-weight: 800;
+}
+
+.contentTitle{
+  text-shadow: 2px 1px 5px #000000;
+  font-size: 3em;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+}
+
+.white{
+  color: white;
+}
+
+.purp{
+  color: #b30086;
 }
