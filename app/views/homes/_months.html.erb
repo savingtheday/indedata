@@ -4,20 +4,21 @@
 
       <%= label_tag :set_months %><br>
       Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %>
-
+      <br>
       End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
     </div>
+    <p>
     <div id="chartStations">
-      Primary Station: <%= select_tag :choose_station, options_for_select(@selected_station_name, params[:choose_station]),
+      Primary Station: <%= select_tag :choose_station_1, options_for_select(@selected_station_name, params[:choose_station_1]),
        {prompt: "Select station"} %>
 
-      Additional Stations: <%= select_tag :choose_station_two, options_for_select(@selected_station_name, params[:choose_station_two]), {prompt: "Select station"} %>
+      Additional Stations: <%= select_tag :choose_station_2, options_for_select(@selected_station_name, params[:choose_station_2]), {prompt: "Select station"} %>
 
-      Additional Stations: <%= select_tag :choose_station_three, options_for_select(@selected_station_name, params[:choose_station_three]), {prompt: "Select station"} %>
+      <%= select_tag :choose_station_3, options_for_select(@selected_station_name, params[:choose_station_3]), {prompt: "Select station"} %>
 
-      Additional Stations: <%= select_tag :choose_station_four, options_for_select(@selected_station_name, params[:choose_station_four]), {prompt: "Select station"} %>
+      <%= select_tag :choose_station_4, options_for_select(@selected_station_name, params[:choose_station_4]), {prompt: "Select station"} %>
 
-      Additional Stations: <%= select_tag :choose_station_five, options_for_select(@selected_station_name, params[:choose_station_five]), {prompt: "Select station"} %>
+      <%= select_tag :choose_station_5, options_for_select(@selected_station_name, params[:choose_station_5]), {prompt: "Select station"} %>
 
         <%= submit_tag :Send %>
 

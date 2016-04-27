@@ -65,50 +65,13 @@ a:hover{
   color: white;
   font-family: 'Work Sans', sans-serif;
   background-color: black;
-  position: fixed;
+  /*position: fixed;*/
   height: 5em;
   padding-top: 1em;
   padding-left: .5em;
 }
 
-.contentContainer{
-  width: 100%;
-}
 
-.content{
-  float: left;
-  width: 33%;
-  display: inline-block;
-  height: 25em;
-}
-
-.left{
-  background-color: white;
-}
-
-.middle{
-  background-color: #b30086;
-}
-
-.right{
-  background-image: url('indego1.png');
-  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-  filter: grayscale(100%);
-  background-size: cover;
-  text-align: center;
-}
-
-#mainContainer{
-  text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  margin: 0 10px;
-  padding: .5em;
-}
-
-.insideContent{
-  margin: 2em;
-}
 
 .footer{
   background-color: black;

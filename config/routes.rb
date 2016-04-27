@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'homes/newdate' => 'homes#newdate'
   post 'homes/show' => 'homes#show'
-  get 'homes/show' => 'homes#show'
+  get 'homes/show' => 'homes#show', as: "data"
   get 'homes/overall' => 'homes#overall'
   get 'homes/currentstats' => 'homes#current_stats'
   get 'static/mainpage'

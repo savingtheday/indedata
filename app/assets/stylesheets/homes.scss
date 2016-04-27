@@ -9,7 +9,6 @@
     background-color: #c7ffff;
     border-radius: 5px;
     width: 80%;
-    display: inline-block;
     margin: 0 auto;
   }
 
@@ -29,11 +28,60 @@
 }
 
 @media (min-width: 451px) {
+// Place all the styles related to the static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+  .largeContainer{
+
+  }
+
+  .mapBG{
+    width: 100%;
+    height: 20em;
+    background-image: url('map.png');
+    background-size: cover;
+    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+    filter: grayscale(100%);
+    background-size: cover;
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .textContainer{
+    width: 100%;
+    text-align: center;
+    padding-top: 9em;
+  }
+
+  .bigParallaxText{
+    color: white;
+    text-shadow: 2px 1px 5px #000000;
+    font-size: 5em;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+  }
+
+  .contentTitle{
+    text-shadow: 2px 1px 5px #000000;
+    font-size: 3em;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+  }
+
+  .white{
+    color: white;
+  }
+
+  .purp{
+    color: #b30086;
+  }
+
+
 
   #chartData{
     text-align: center;
     height: 15em;
-    background-color: #c7ffff;
     border-radius: 5px;
     width: 80%;
     display: inline-block;
@@ -42,16 +90,13 @@
   }
 
   #chartMonths{
-    width: 30%;
-    display: inline-block;
-    float: left;
+    width: 90%;
+    text-align: center;
   }
 
 
   #chartStations{
-    width: 50%;
-    display: inline-block;
-    float: left;
+    width: 90%;
   }
 
   .lineChart{
@@ -59,14 +104,34 @@
     border-radius: 5px;
   }
 
-  .pieContainer{
-    margin: 3em;
-    border-radius: 5px;
+
+  .bigContent{
+    float: left;
+    width: 66.6%;
+    display: inline-block;
+    height: 25em;
+    h2{
+      color: #b30086;
+    }
+    text-align: center;
   }
 
-  .pieChart{
-    display: inline-block;
-    float: left;
-    margin: 1em;
+  .left{
+    background-color: #b30086;
   }
+
+  .middle{
+    background-color: #b30086;
+  }
+
+  .rightForm{
+    background-color: white;
+    color: #b30086;
+    font-size: 2em;
+    position: absolute;
+    border-radius: 5px;
+    border: #b30086;
+  }
+
+
 }

@@ -50,11 +50,20 @@ class HomesController < ApplicationController
   def newdate
     @month_start = params[:start_month]
     @month_end = params[:end_month]
-    @station_variable = params[:choose_station]
-    @station_variable_two = params[:choose_station_two]
-    @station_variable_three = params[:choose_station_three]
-    @station_variable_four = params[:choose_station_four]
-    @station_variable_five = params[:choose_station_five]
+     @station_variables = []
+
+    for i in 1..5 do
+      station_id = params["choose_station_#{i}"]
+      name = !station_id.empty? ? Station.where(station_id: station_id).first.station_name : nil
+      if name
+      ap @station_variables <<  {name: name, data: BikeTrip.group_by_month(:start_time).where(start_station_id: station_id, start_time: @month_start..@month_end).count}
+     end
+   end
+    puts "WE HAVE #{@station_variables.count} STATIONS!!"
+    # @station_variable_two = params[:choose_station_two]
+    # @station_variable_three = params[:choose_station_three]
+    # @station_variable_four = params[:choose_station_four]
+    # @station_variable_five = params[:choose_station_five]
     data_methods
     @date_change = updated_data_page
     @selected_station_name = updated_station_name_page
@@ -79,26 +88,24 @@ class HomesController < ApplicationController
 
   def data_methods
     @trip = BikeTrip.new
-    @pretty_month_start = Time.parse(@month_start).strftime('%b %d, %Y')
-    @pretty_month_end = Time.parse(@month_end).strftime('%b %d, %Y')
     @station = Station.all
     @mytrips = Station.joins(:bike_trips)
     data = indego_api_response.body
     @result = JSON.parse(data)
+    pretty_months
+    # @kiosk = @result['features'][1]['properties']
+    # all_names = []
+    # @result['features'].each do |child|
+    #   all_names.push( child['properties']['name'])
+    # end
 
-    @kiosk = @result['features'][1]['properties']
-
-
-
-    all_names = []
-
-    @result['features'].each do |child|
-      all_names.push( child['properties']['name'])
-    end
-
-    @all_kiosks = all_names
+    # @all_kiosks = all_names
   end
 
+  def pretty_months
+    @pretty_month_start = Time.parse(@month_start).strftime('%b %d, %Y')
+    @pretty_month_end = Time.parse(@month_end).strftime('%b %d, %Y')
+  end
 
 
   # def name_via_id
