@@ -1,0 +1,28 @@
+<div class="largeContainer">
+
+    <div class="mapBG">
+      <div class="textContainer">
+        <span class="bigParallaxText"></span>
+      </div>
+    </div>
+  <div class="contentContainer">
+
+    <div class="bigContent left">
+        <h2> Daily visits from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
+
+
+
+        <div class="lineChart">
+          <%= line_chart @station_variables,
+            colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"],
+            library: {backgroundColor: "#eee"} %>
+        </div>
+
+
+
+      </div>
+      <div class="content rightForm">
+        <%= render 'months' %>
+        <br>
+      </div>
+</div>
