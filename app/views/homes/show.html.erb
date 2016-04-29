@@ -1,14 +1,14 @@
 <div class="largeContainer">
 
     <div class="mapBG">
-      <div class="textContainer">
+      <div class="textContainerData">
         <span class="bigParallaxText">Compare kiosks.</span>
       </div>
     </div>
   <div class="contentContainer">
 
     <div class="bigContent left">
-        <h2> Monthly visits as compared to additional stations
+        <h2> Trips started at station by month
         <br>
         from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
 
@@ -19,27 +19,27 @@
             colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"],
             library: {backgroundColor: "#eee"} %>
         </div>
-
-        <h2> Daily visits as compared to additional stations
+        <h2> Trips started at station by day
         <br>
         from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
 
-        <div class="lineChart">
-          <%= line_chart [
-            {name: @station_variable, data: BikeTrip.group_by_day(:start_time).where(start_station_id: @station_variable, start_time: @month_start..@month_end).count},
-            {name: "Rittenhouse Square", data: BikeTrip.group_by_day(:start_time).where(start_station_id: @station_variable_two, start_time: @month_start..@month_end).count},
-            {name: "John F. Street Community Center", data: BikeTrip.group_by_day(:start_time).where(start_station_id: @station_variable_three, start_time: @month_start..@month_end).count},
-            {name: "John F. Street Community Center", data: BikeTrip.group_by_day(:start_time).where(start_station_id: @station_variable_four, start_time: @month_start..@month_end).count},
-            {name: "John F. Street Community Center", data: BikeTrip.group_by_day(:start_time).where(start_station_id: @station_variable_five, start_time: @month_start..@month_end).count}
-            ],
+
+          <div class="lineChart">
+          <%= line_chart @station_variables_daily,
             colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"],
             library: {backgroundColor: "#eee"} %>
         </div>
 
-            <h3>Overall Visits To stations by month</h3>
+        <h2> Trips started at station by day of week
+        <br>
+        from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
 
 
-
+          <div class="lineChart">
+          <%= column_chart @station_variables_weekday,
+            colors: ["#86b300", "#b30086", "#2d00b3", "#0086b3", "#e6ad00"],
+            library: {backgroundColor: "#eee"} %>
+        </div>
 
       </div>
       <div class="content rightForm">

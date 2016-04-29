@@ -50,15 +50,37 @@ class HomesController < ApplicationController
   def newdate
     @month_start = params[:start_month]
     @month_end = params[:end_month]
-     @station_variables = []
+    @station_variables = []
 
     for i in 1..5 do
       station_id = params["choose_station_#{i}"]
       name = !station_id.empty? ? Station.where(station_id: station_id).first.station_name : nil
       if name
-      ap @station_variables <<  {name: name, data: BikeTrip.group_by_month(:start_time).where(start_station_id: station_id, start_time: @month_start..@month_end).count}
+      ap @station_variables <<  {name: name, data: BikeTrip.group_by_month(:start_time, format: "%b %d, %Y").where(start_station_id: station_id, start_time: @month_start..@month_end).count}
      end
    end
+
+    @station_variables_daily = []
+
+    for i in 1..5 do
+      station_id = params["choose_station_#{i}"]
+      name = !station_id.empty? ? Station.where(station_id: station_id).first.station_name : nil
+      if name
+      ap @station_variables_daily <<  {name: name, data: BikeTrip.group_by_day(:start_time, format: "%a %b %d, %Y").where(start_station_id: station_id, start_time: @month_start..@month_end).count}
+     end
+   end
+
+    @station_variables_weekday = []
+
+    for i in 1..5 do
+      station_id = params["choose_station_#{i}"]
+      name = !station_id.empty? ? Station.where(station_id: station_id).first.station_name : nil
+        if name
+        ap @station_variables_weekday <<  {name: name, data: BikeTrip.group_by_day_of_week(:start_time, format: "%a").where(start_station_id: station_id, start_time: @month_start..@month_end).count}
+       end
+     end
+
+
     puts "WE HAVE #{@station_variables.count} STATIONS!!"
     # @station_variable_two = params[:choose_station_two]
     # @station_variable_three = params[:choose_station_three]

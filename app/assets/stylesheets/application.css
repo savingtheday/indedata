@@ -71,7 +71,11 @@ a:hover{
   padding-left: .5em;
 }
 
-
+.textContainer{
+  width: 100%;
+  text-align: center;
+  padding-top: 9em;
+}
 
 .footer{
   background-color: black;
