@@ -9,7 +9,7 @@
   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Titillium+Web'%>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-no-turbolink>
 
   <header class="mainHeader">
 
@@ -18,7 +18,7 @@
 
         <span class="topLink"><%= link_to 'Home', root_url %></span>
 
-        <span class="topLink"><%= link_to 'Data', data_path %></span>
+        <span class="topLink"><a href="/homes/show/">Data</a></span>
 
         <span class="topLink"><%= link_to 'Contact', root_url %></span>
       </div>
@@ -28,7 +28,7 @@
         <%= link_to 'Home', root_url %>
       </li>
       <li>
-        <%= link_to 'Data', data_path %>
+        <span class="topLink"><a href="/homes/show/">Data</a></span>
       </li>
       <li>
         <%= link_to 'Contact', root_url %>

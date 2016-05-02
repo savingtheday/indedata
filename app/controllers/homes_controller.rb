@@ -48,6 +48,7 @@ class HomesController < ApplicationController
   end
 
   def newdate
+    puts "HERE"
     @month_start = params[:start_month]
     @month_end = params[:end_month]
     @station_variables = []

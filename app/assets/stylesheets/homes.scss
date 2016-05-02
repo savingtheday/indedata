@@ -128,7 +128,10 @@
     background-color: white;
     color: #b30086;
     font-size: 2em;
-    position: absolute;
+    position: fixed;
+    right: 0;
+    display: inline-block;
+    float: left;
     border-radius: 5px;
     border: #b30086;
   }
