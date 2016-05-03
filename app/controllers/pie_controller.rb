@@ -51,11 +51,6 @@ class HomesController < ApplicationController
     puts "HERE"
     @month_start = params[:start_month]
     @month_end = params[:end_month]
-
-    @pie_variable = params["choose_station_1"]
-
-
-
     @station_variables = []
 
     for i in 1..5 do

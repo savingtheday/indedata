@@ -1,113 +1,132 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@media (max-width: 450px) {
-
-  #chartData{
-    text-align: center;
-    height: 25em;
-    background-color: #c7ffff;
-    border-radius: 5px;
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  #chartMonths{
-    width: 30%;
-    padding-left: 35%;
-  }
 
 
-  #chartStations{
-    width: 50%;
-  }
+.largeContainer{
 
-  .drop{
-    width: 30px;
-  }
 }
 
-@media (min-width: 451px) {
-// Place all the styles related to the static controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.mapBG{
+  width: 100%;
+  height: 12em;
+  background-image: url('map.png');
+  background-size: cover;
+  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+  filter: grayscale(100%);
+  background-size: cover;
+  text-align: center;
+  margin-bottom: 2em;
+}
 
-  .largeContainer{
+.textContainerData{
+  width: 100%;
+  text-align: center;
+  padding-top: 4em;
+}
 
-  }
+.bigParallaxText{
+  color: white;
+  text-shadow: 2px 1px 5px #000000;
+  font-size: 5em;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+}
 
-  .mapBG{
-    width: 100%;
-    height: 12em;
-    background-image: url('map.png');
-    background-size: cover;
-    -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-    filter: grayscale(100%);
-    background-size: cover;
-    text-align: center;
-    margin-bottom: 2em;
-  }
+.contentTitle{
+  text-shadow: 2px 1px 5px #000000;
+  font-size: 3em;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 800;
+}
 
-  .textContainerData{
-    width: 100%;
-    text-align: center;
-    padding-top: 4em;
-  }
+.white{
+  color: white;
+}
 
-  .bigParallaxText{
-    color: white;
-    text-shadow: 2px 1px 5px #000000;
-    font-size: 5em;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 800;
-  }
+.purp{
+  color: #b30086;
+}
 
-  .contentTitle{
-    text-shadow: 2px 1px 5px #000000;
-    font-size: 3em;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 800;
-  }
 
-  .white{
-    color: white;
-  }
 
-  .purp{
+#chartData{
+  text-align: center;
+  height: 15em;
+  border-radius: 5px;
+  width: 80%;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#chartMonths{
+  width: 90%;
+  text-align: center;
+}
+
+
+#chartStations{
+  width: 90%;
+}
+
+.lineChart{
+  margin: 3em;
+  border-radius: 5px;
+}
+
+
+.bigContent{
+  float: left;
+  width: 66.6%;
+  display: inline-block;
+  height: 25em;
+  h2{
     color: #b30086;
   }
+  text-align: center;
+}
 
+.left{
+  background-color: #b30086;
+}
 
+.middle{
+  background-color: #b30086;
+}
+
+.rightForm{
+  background-color: white;
+  color: #b30086;
+  font-size: 2em;
+  position: fixed;
+  right: 0;
+  display: inline-block;
+  float: left;
+  border-radius: 5px;
+  border: #b30086;
+}
+
+#chartDataSmall{
+  display: none;
+}
+
+@media (max-width: 1195px) {
+
+  .rightForm{
+    display: none;
+  }
 
   #chartData{
-    text-align: center;
-    height: 15em;
-    border-radius: 5px;
-    width: 80%;
-    display: inline-block;
-    margin: 0 auto;
-    padding: 10px;
+    display: none;
   }
 
-  #chartMonths{
-    width: 90%;
-    text-align: center;
+  .content.rightForm{
+    display: none;
   }
-
-
-  #chartStations{
-    width: 90%;
-  }
-
-  .lineChart{
-    margin: 3em;
-    border-radius: 5px;
-  }
-
-
   .bigContent{
     float: left;
-    width: 66.6%;
+    width: 100%;
     display: inline-block;
     height: 25em;
     h2{
@@ -116,25 +135,9 @@
     text-align: center;
   }
 
-  .left{
-    background-color: #b30086;
+  .content.topForm{
+    width: 100%;
+    background-color: blue;
   }
-
-  .middle{
-    background-color: #b30086;
-  }
-
-  .rightForm{
-    background-color: white;
-    color: #b30086;
-    font-size: 2em;
-    position: fixed;
-    right: 0;
-    display: inline-block;
-    float: left;
-    border-radius: 5px;
-    border: #b30086;
-  }
-
 
 }

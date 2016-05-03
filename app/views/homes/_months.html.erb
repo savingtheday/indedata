@@ -1,15 +1,18 @@
 <div id="chartData">
   <div id="chartMonths">
     <%= form_tag('/homes/newdate', method: :get) do %>
-      Start: <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %>
+      Dates:
       <br>
-      End: <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
+      <%= select_tag :start_month, options_for_select(@date_change, params[:start_month]) %> <%= select_tag :end_month, options_for_select(@date_change, params[:end_month]) %>
     </div>
     <p>
     <div id="chartStations">
-      Stations: <%= select_tag :choose_station_1, options_for_select(@selected_station_name, params[:choose_station_1]),
+      Primary Station:
+      <br>
+      <%= select_tag :choose_station_1, options_for_select(@selected_station_name, params[:choose_station_1]),
        {prompt: "Select station"} %>
-
+      Comparison Stations:
+      <br>
       <%= select_tag :choose_station_2, options_for_select(@selected_station_name, params[:choose_station_2]), {prompt: "Select station"} %>
 
       <%= select_tag :choose_station_3, options_for_select(@selected_station_name, params[:choose_station_3]), {prompt: "Select station"} %>
@@ -23,3 +26,4 @@
     <% end %>
   </div>
 </div>
+

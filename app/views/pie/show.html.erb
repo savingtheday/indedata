@@ -1,0 +1,39 @@
+<div class="largeContainer">
+
+  <div class="bigContent left">
+    <div class="lineChart">
+      <h3>Types of Trips To and From
+      <br>
+      from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h3>
+
+      <%= pie_chart BikeTrip.group(:trip_route_category).where(start_station_id: @station_variable,start_time: @month_start..@month_end).count,
+       colors: ["#86b300", "#2d00b3"],
+      library: {backgroundColor: "#eee"} %>
+    </div>
+
+    <div class="lineChart">
+      <h3>Types of Passholders Using
+      <br>
+      from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h3>
+      <%= pie_chart BikeTrip.group(:passholder_type).where(start_station_id: @station_variable).count,
+      colors: ["#2d00b3", "#86b300", "#b30086"],
+      library: {backgroundColor: "#eee"} %>
+    </div>
+    <div class="lineChart">
+            <h2> Daily visits to %>
+            <br>
+            from  <%= @pretty_month_start %> to <%= @pretty_month_end %></h2>
+
+            <%= line_chart BikeTrip.group_by_day(:start_time, format: "%a %B %d, %y").where(start_station_id: @station_variable, start_time: @month_start..@month_end).count,
+              library: {backgroundColor: "#eee"} %>
+      </div>
+  </div>
+
+  <div class="content right">
+    <%= render 'pie' %>
+    <br>
+  </div>
+
+
+
+</div>

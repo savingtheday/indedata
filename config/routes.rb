@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   get 'homes/newdate' => 'homes#newdate'
   post 'homes/show' => 'homes#show'
   get 'homes/show' => 'homes#show', as: "data"
-  get 'homes/pie' => 'homes/#show'
+  get 'pie/show' => 'pie/#show'
   get 'homes/overall' => 'homes#overall'
   get 'homes/currentstats' => 'homes#current_stats'
   get 'static/mainpage'
   root "static#mainpage"
 
   resources :bike_trips
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
