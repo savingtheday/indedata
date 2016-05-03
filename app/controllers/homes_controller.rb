@@ -35,8 +35,8 @@ class HomesController < ApplicationController
   end
 
   def show
-    @month_start = "2015-04-01"
-    @month_end = "2015-12-30"
+    @month_start = "2015-04-23"
+    @month_end = "2015-04-23"
     @station_variable = 3005
     @station_variable_two = nil
     @station_variable_three = nil

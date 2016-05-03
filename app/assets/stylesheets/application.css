@@ -88,3 +88,12 @@ a:hover{
 }
 
 
+@media (max-width: 800px) {
+
+  .textContainer{
+    width: 100%;
+    text-align: center;
+    padding-top: 3em;
+  }
+}
+
