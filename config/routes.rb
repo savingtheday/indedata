@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'homes/currentstats' => 'homes#current_stats'
   get 'static/mainpage'
   root 'static#mainpage'
-  root "homes#show"
 
   resources :bike_trips
 

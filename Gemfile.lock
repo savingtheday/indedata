@@ -140,11 +140,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (0.19.1)
     thread_safe (0.3.5)
-<<<<<<< HEAD
     tilt (2.0.4)
-=======
-    tilt (2.0.3)
->>>>>>> 63e17960fee803ae642d6ec844db9e27f05a0c76
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
