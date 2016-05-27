@@ -1,5 +1,4 @@
-== README
+== Indedata
 
-This README would normally document whatever steps are necessary to get the
-Indedata is a Ruby on Rails application that allows users to interact with thousands of lines of CSV data to create charts and graphs to analyse Philly's bike share program.
+Indedata is a Ruby on Rails application that allows users to interact with thousands of lines of CSV data to create charts and graphs to analyse Philly's bike share program. It uses the Chartkick gem to generate beautiful graphs and charts that show how frequently bike kiosks are used, when their peak hours are, and what type of user is riding Indego bikes. 
 
